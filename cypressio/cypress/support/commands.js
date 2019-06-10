@@ -10,14 +10,14 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add("login", (nuxeoUrl, username, password) => {
-  cy.visit(nuxeoUrl)
+Cypress.Commands.add("login", (username) => {
+  cy.visit(Cypress.env('nuxeoUrl'))
   cy.get('#username')
     .click()
     .type(username)
   cy.get('#password')
     .click()
-    .type(password)
+    .type(username)
   cy.get('.login_button')
     .click()
 });

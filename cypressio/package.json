@@ -3,15 +3,22 @@
   "version": "1.0.0",
   "scripts": {
     "cypress:open": "$(npm bin)/cypress open",
-    "test": "$(npm bin)/cypress run --browser chrome"
+    "test": "$(npm bin)/cypress run --browser chrome --env nuxeoUrl=http://localhost:8080",
+    "rf": "$(npm bin)/cypress run --browser chrome --env nuxeoUrl=https://nightly-rainforest.nuxeo.com",
+    "dev:local": "$(npm bin)/cypress run --browser chrome --env nuxeoUrl=http://localhost:8080 -e TAGS='@focus'",
+    "dev:rf": "$(npm bin)/cypress run --browser chrome --env nuxeoUrl=http://localhost:8080 -e TAGS='@focus'"
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "cypress": "^3.3.1",
     "chai-jquery": "^2.1.0",
+    "cypress": "^3.3.1",
+    "cypress-cucumber-preprocessor": "^1.11.2",
     "jquery": "^3.4.1"
   },
   "dependencies": {
     "chai": "^4.2.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "./cypress/support/step_definitions/"
   }
 }
